@@ -150,7 +150,16 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities =require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-local servers = { 'pyright', 'rust_analyzer' }
+require'lspconfig'.pyright.setup{
+    on_attach = on_attach,
+    -- provide more clues about workspace
+    root_dir = function(fname)
+        return require'lspconfig.util'.root_pattern('.git', 'setup.py', 'pyrightconfig.json', '.venv', 'env')(fname) or vim.loop.os_homedir()
+    end,
+    capabilities = capabilities
+
+}
+local servers = { 'rust_analyzer' }
 for _, lsp in ipairs(servers) do
     lspconf[lsp].setup {
         on_attach = on_attach,
