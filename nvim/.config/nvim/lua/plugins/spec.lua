@@ -13,8 +13,6 @@ return {
     { 'saadparwaiz1/cmp_luasnip' }, 
     { 'L3MON4D3/LuaSnip' },
 
-    -- git highlighting
-    { 'lewis6991/gitsigns.nvim' },
     -- line/block commenting
     { 'numToStr/Comment.nvim' },
     -- indentation guides
@@ -32,5 +30,5 @@ return {
       -- NOTE: If you have trouble with this installation, refer to the README for telescope-fzf-native.
       build = 'make',
     },      
-    { 'tpope/vim-fugitive' },
+    { 'ThePrimeagen/vim-be-good' },
 }
