@@ -1,9 +1,18 @@
+-- Map leader and remaps
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.cmd.nnoremap("<C-d>", "<C-d>zz")
+vim.cmd.nnoremap("<C-u>", "<C-u>zz")
+vim.cmd.nnoremap("n", "nzzzv")
+vim.cmd.nnoremap("N", "Nzzzv")
+
+vim.cmd.xnoremap("<leader>p", "\"_dP")
+
 require('config.settings')
 require('config.lazy')
+require('config.colors')
 
 -- Gitsigns
 require('gitsigns').setup {
@@ -19,6 +28,8 @@ require('gitsigns').setup {
     vim.keymap.set('n', ']c', require('gitsigns').next_hunk, { buffer = bufnr })
   end,
 }
+
+vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
 
 -- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
