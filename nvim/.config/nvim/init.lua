@@ -1,15 +1,9 @@
--- Map leader and remaps
+-- Map leader
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-vim.cmd.nnoremap("<C-d>", "<C-d>zz")
-vim.cmd.nnoremap("<C-u>", "<C-u>zz")
-vim.cmd.nnoremap("n", "nzzzv")
-vim.cmd.nnoremap("N", "Nzzzv")
-
-vim.cmd.xnoremap("<leader>p", "\"_dP")
-
+require('config.remap')
 require('config.settings')
 require('config.lazy')
 require('config.colors')
