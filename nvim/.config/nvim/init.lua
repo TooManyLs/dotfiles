@@ -165,16 +165,7 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities =require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-require'lspconfig'.pyright.setup{
-    on_attach = on_attach,
-    -- provide more clues about workspace
-    root_dir = function(fname)
-        return require'lspconfig.util'.root_pattern('.git', 'setup.py', 'pyrightconfig.json', '.venv', 'env')(fname) or vim.loop.os_homedir()
-    end,
-    capabilities = capabilities
-
-}
-local servers = { 'rust_analyzer' }
+local servers = { 'rust_analyzer', 'pyright' }
 for _, lsp in ipairs(servers) do
     lspconf[lsp].setup {
         on_attach = on_attach,
@@ -243,3 +234,6 @@ cmp.setup ({
     },
 })
 
+-- For some reason TS prevents LSP from autostarting
+-- so I added this workaround.
+vim.cmd('LspStart')
