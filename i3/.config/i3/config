@@ -169,7 +169,8 @@ client.focused          #008080 #008080 #dddddd
 client.unfocused        #161616 #161616 #dddddd
 client.focused_inactive #228080 #228080 #dddddd
 client.placeholder      #333333 #666666 #333333
-
+default_border pixel 1
+default_floating_border pixel 1
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
