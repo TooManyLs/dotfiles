@@ -27,3 +27,5 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 
 vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
+
+vim.keymap.set('n', '<leader>ex', vim.cmd.Explore)
