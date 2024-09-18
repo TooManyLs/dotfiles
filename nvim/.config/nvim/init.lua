@@ -42,14 +42,17 @@ require('telescope').setup {
 require('telescope').load_extension 'fzf'
 
 -- Add leader shortcuts
-vim.keymap.set('n', '<leader><space>', function() require('telescope.builtin').buffers { sort_lastused = true } end)
-vim.keymap.set('n', '<leader>sf', function() require('telescope.builtin').find_files { previewer = false } end)
-vim.keymap.set('n', '<leader>sb', function() require('telescope.builtin').current_buffer_fuzzy_find() end)
-vim.keymap.set('n', '<leader>sh', function() require('telescope.builtin').help_tags() end)
-vim.keymap.set('n', '<leader>st', function() require('telescope.builtin').tags() end)
-vim.keymap.set('n', '<leader>sd', function() require('telescope.builtin').grep_string() end)
-vim.keymap.set('n', '<leader>sp', function() require('telescope.builtin').live_grep() end)
-vim.keymap.set('n', '<leader>?', function() require('telescope.builtin').oldfiles() end)
+local tbuiltin = require('telescope.builtin')
+local tpreviewers = require('telescope.previewers')
+
+vim.keymap.set('n', '<leader><space>', function() tbuiltin.buffers { sort_lastused = true } end)
+vim.keymap.set('n', '<leader>sf', function() tbuiltin.find_files { previewer = true } end)
+vim.keymap.set('n', '<leader>sb', function() tbuiltin.current_buffer_fuzzy_find() end)
+vim.keymap.set('n', '<leader>sh', function() tbuiltin.help_tags() end)
+vim.keymap.set('n', '<leader>st', function() tbuiltin.tags() end)
+vim.keymap.set('n', '<leader>sd', function() tbuiltin.grep_string() end)
+vim.keymap.set('n', '<leader>sp', function() tbuiltin.live_grep() end)
+vim.keymap.set('n', '<leader>?', function() tbuiltin.oldfiles() end)
 
 -- Treesitter configuration
 -- Parsers must be installed manually via :TSInstall
