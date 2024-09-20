@@ -158,6 +158,7 @@ end
 -- Autocompletion setup
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
+local compare = cmp.config.compare
 
 luasnip.config.setup {}
 
@@ -174,7 +175,9 @@ cmp.setup ({
                 and not context.in_syntax_group("Comment")
         end
     end,
-    
+    view = {                                                        
+        entries = {name = 'custom', selection_order = 'near_cursor' } 
+    },                                                               
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -213,6 +216,15 @@ cmp.setup ({
         { name = 'buffer' },
         { name = 'path' },
         { name = 'luasnip' },
+    },
+    sorting = {
+        comparators = {
+            compare.exact,
+            compare.order,
+            compare.kind,
+            compare.score,
+            compare.scopes,
+        },
     },
 })
 
