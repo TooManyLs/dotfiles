@@ -6,6 +6,10 @@
 
 prepend_keymap = [
     { on = ["<S-b>", "f"], run = 'shell "feh --bg-fill $0"  --confirm', desc = "Set as background"},
+    { on = "T", run = "plugin --sync max-preview", desc = "Maximize or restore preview" },
+    { on = ["g", "r"], run = '''
+    shell 'ya pub dds-cd --str "$(git rev-parse --show-toplevel)"' --confirm
+    ''', desc = "Go to the root of git repository" },
 ]
 
 keymap = [

@@ -42,7 +42,7 @@ count_selected = { fg = "white", bg = "yellow" }
 
 # Border
 border_symbol = "│"
-border_style  = { fg = "#22a6a6" }
+border_style  = { fg = "#008080" }
 
 # Highlighting
 syntect_theme = ""
