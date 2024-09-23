@@ -16,3 +16,12 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 export PATH="$PATH:/opt/nvim-linux64/bin"
 eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/zen.toml)"
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
