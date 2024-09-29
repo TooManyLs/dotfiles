@@ -20,8 +20,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- Add indent guides
 require("ibl").setup({
-	indent = { char = "┊" },
-	whitespace = { remove_blankline_trail = false },
+    indent = { char = "▏" },
+    whitespace = { highlight = {"Whitespace"}, remove_blankline_trail = false },
 })
 
 require('Comment').setup()
@@ -213,7 +213,7 @@ cmp.setup ({
     sources = {
         { name = 'nvim_lsp' },
         { name = 'nvim_lsp_signature_help' },
-        { name = 'buffer' },
+        -- { name = 'buffer' },
         { name = 'path' },
         { name = 'luasnip' },
     },
