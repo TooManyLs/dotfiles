@@ -175,9 +175,10 @@ cmp.setup ({
                 and not context.in_syntax_group("Comment")
         end
     end,
-    view = {                                                        
-        entries = {name = 'custom', selection_order = 'near_cursor' } 
-    },                                                               
+    window = {
+        documentation = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered({ col_offset = -3 }),
+    },
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -213,20 +214,37 @@ cmp.setup ({
     sources = {
         { name = 'nvim_lsp' },
         { name = 'nvim_lsp_signature_help' },
-        -- { name = 'buffer' },
         { name = 'path' },
-        { name = 'luasnip' },
+        { name = 'luasnip', keyword_length = 4 },
     },
     sorting = {
         comparators = {
+            compare.offset,
             compare.exact,
-            compare.order,
             compare.kind,
-            compare.score,
-            compare.scopes,
+            compare.order,
         },
     },
 })
+
+cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    view = {
+        entries = {
+            name = 'wildmenu',
+            separator = ' || '
+        }
+    },
+    sources = {
+        { name = 'buffer' }
+    }
+})
+
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on(
+    'confirm_done',
+    cmp_autopairs.on_confirm_done()
+)
 
 -- For some reason TS prevents LSP from autostarting
 -- so I added this workaround.
