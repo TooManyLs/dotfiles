@@ -86,7 +86,7 @@ keymap = [
 	# { on = "S",         run = "search rg",                   desc = "Search files by content using ripgrep" },
 	{ on = "s",         run = "plugin fzf",                  desc = "Jump to a directory or reveal a file using fzf" },
 	{ on = "<C-s>",     run = "escape --search",             desc = "Cancel the ongoing search" },
-	# { on = "z",         run = "plugin zoxide",               desc = "Jump to a directory using zoxide" },
+	{ on = "z",         run = "plugin zoxide",               desc = "Jump to a directory using zoxide" },
 	{ on = "Z",         run = "plugin fzf",                  desc = "Jump to a directory or reveal a file using fzf" },
 
 	# Linemode

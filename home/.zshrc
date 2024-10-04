@@ -12,10 +12,13 @@ compinit
 # End of lines added by compinstall
 alias hiddify='dbus-launch hiddify'
 alias py='python'
-alias ls='ls --color=auto'
+alias ls='ls -l --color=auto'
+alias ll='ls -AhG'
+alias llg='ls -Ah'
 alias grep='grep --color=auto'
 export PATH="$PATH:/opt/nvim-linux64/bin"
 eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/zen.toml)"
+eval "$(zoxide init zsh)"
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
