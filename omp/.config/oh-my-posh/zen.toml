@@ -14,7 +14,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     style = 'plain'
     foreground = '#ff2222'
     background = 'transparent'
-    template = '{{ if .Error }}{{ .Error }}{{ else }}rs {{ .Full }}{{ end }}'
+    template = '{{ if .Error }}{{ .Error }}{{ else }}rs {{ .Full }} {{ end }}'
 
   [[blocks.segments]]
     type = 'python'
@@ -41,7 +41,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
 
     [blocks.segments.properties]
-      branch_icon = ''
+      branch_icon = ' '
       commit_icon = '@'
       fetch_status = true
 
