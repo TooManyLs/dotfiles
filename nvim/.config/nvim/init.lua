@@ -159,6 +159,7 @@ end
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 local compare = cmp.config.compare
+local comparator = require('cmp_lsp_rs').comparators
 
 luasnip.config.setup {}
 
@@ -188,50 +189,40 @@ cmp.setup ({
         ['<C-f>'] = cmp.mapping.scroll_docs(-4),    -- Up
         ['<C-d>'] = cmp.mapping.scroll_docs(4),     -- Down
         ['<C-Space>'] = cmp.mapping.complete(),
-        ['<CR>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Replace,
+        ['<Tab>'] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Insert,
             select = true,
         },
-        ['<Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-                luasnip.expand_or_jump()
-            else
-                fallback()
-            end
-        end, { 'i', 's' }),
-        ['<S-Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-                luasnip.jump(-1)
-            else
-                fallback()
-            end
-        end, { 'i', 's' }),
+        ['<C-j>'] = cmp.mapping.select_next_item{
+            behavior = cmp.SelectBehavior.Select,
+        },
+        ['<C-k>'] = cmp.mapping.select_prev_item{
+            behavior = cmp.SelectBehavior.Select,
+        },
     }),
-    sources = {
+    sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'nvim_lsp_signature_help' },
         { name = 'path' },
         { name = 'luasnip', keyword_length = 4 },
-    },
+    }, {
+        { name = 'buffer' },
+    }),
     sorting = {
         comparators = {
-            compare.offset,
             compare.exact,
-            compare.kind,
-            compare.order,
-        },
+            compare.score,
+            comparator.inscope_inherent_import,
+            comparator.sort_by_lable_but_underscore_last,
+        }
     },
+    performance = {
+        max_view_entries = 15,
+    },
+    experimental = {
+        ghost_text = true,
+    }
 })
-
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.event:on(
-    'confirm_done',
-    cmp_autopairs.on_confirm_done()
-)
 
 -- For some reason TS prevents LSP from autostarting
 -- so I added this workaround.

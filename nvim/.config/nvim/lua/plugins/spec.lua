@@ -4,15 +4,6 @@ return {
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
 
-    -- autocompletion
-    { 'hrsh7th/nvim-cmp' },
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-nvim-lsp-signature-help' },
-    { 'hrsh7th/cmp-buffer' },
-    { 'hrsh7th/cmp-path' },
-    { 'saadparwaiz1/cmp_luasnip' }, 
-    { 'L3MON4D3/LuaSnip' },
-
     -- line/block commenting
     { 'numToStr/Comment.nvim' },
     -- indentation guides
