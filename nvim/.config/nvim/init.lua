@@ -70,7 +70,7 @@ require('nvim-treesitter.configs').setup {
     },
   },
   indent = {
-    enable = true,
+    enable = false,
   },
   textobjects = {
     select = {
@@ -190,7 +190,7 @@ cmp.setup ({
         ['<C-d>'] = cmp.mapping.scroll_docs(4),     -- Down
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<Tab>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Insert,
+            behavior = cmp.ConfirmBehavior.Replace,
             select = true,
         },
         ['<C-j>'] = cmp.mapping.select_next_item{
