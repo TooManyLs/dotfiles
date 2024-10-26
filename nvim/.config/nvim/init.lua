@@ -18,6 +18,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+require('leap').create_default_mappings()
+
 -- Add indent guides
 require("ibl").setup({
     indent = { char = "▏" },
