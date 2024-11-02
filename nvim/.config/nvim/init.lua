@@ -229,3 +229,22 @@ cmp.setup ({
 -- For some reason TS prevents LSP from autostarting
 -- so I added this workaround.
 vim.cmd('LspStart')
+
+-- Rounded borders for hover/signatureHelp floating windows
+local _border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = _border
+  }
+)
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+  vim.lsp.handlers.signature_help, {
+    border = _border
+  }
+)
+
+vim.diagnostic.config{
+  float={border=_border}
+}
