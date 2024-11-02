@@ -52,9 +52,9 @@ vim.keymap.set('n', '<leader>sf', function() tbuiltin.find_files { previewer = t
 vim.keymap.set('n', '<leader>sb', function() tbuiltin.current_buffer_fuzzy_find() end)
 vim.keymap.set('n', '<leader>sh', function() tbuiltin.help_tags() end)
 vim.keymap.set('n', '<leader>st', function() tbuiltin.tags() end)
-vim.keymap.set('n', '<leader>sd', function() tbuiltin.grep_string() end)
 vim.keymap.set('n', '<leader>sp', function() tbuiltin.live_grep() end)
 vim.keymap.set('n', '<leader>?', function() tbuiltin.oldfiles() end)
+vim.keymap.set('n', '<leader>em', function() tbuiltin.symbols() end)
 
 -- Treesitter configuration
 -- Parsers must be installed manually via :TSInstall

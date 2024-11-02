@@ -21,5 +21,9 @@ return {
       -- NOTE: If you have trouble with this installation, refer to the README for telescope-fzf-native.
       build = 'make',
     },      
+    { 'nvim-telescope/telescope-symbols.nvim' },
     { 'ThePrimeagen/vim-be-good' },
+
+    -- a/i textobject manipulation
+    { 'echasnovski/mini.ai', opts = {} },
 }
