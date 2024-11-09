@@ -210,14 +210,6 @@ cmp.setup ({
     }, {
         { name = 'buffer' },
     }),
-    sorting = {
-        comparators = {
-            compare.exact,
-            compare.score,
-            comparator.inscope_inherent_import,
-            comparator.sort_by_lable_but_underscore_last,
-        }
-    },
     performance = {
         max_view_entries = 15,
     },
@@ -226,6 +218,16 @@ cmp.setup ({
     }
 })
 
+cmp.setup.filetype("rust", {
+    sorting = {
+        comparators = {
+            compare.exact,
+            compare.score,
+            comparator.inscope_inherent_import,
+            comparator.sort_by_lable_but_underscore_last,
+        }
+    },
+})
 -- For some reason TS prevents LSP from autostarting
 -- so I added this workaround.
 vim.cmd('LspStart')

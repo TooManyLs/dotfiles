@@ -12,7 +12,7 @@ function ColorsApply(color)
     vim.api.nvim_set_hl(0, "LazyNormal", { bg = "#262626" })
     vim.api.nvim_set_hl(0, "MasonNormal", { bg = "#262626" })
     vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#dddddd", bg = "none" })
-    vim.api.nvim_set_hl(0, "CursorLine", { bold = true, link = "ColorColumn" })
+    vim.api.nvim_set_hl(0, "CursorLine", { bold = true, bg = "#313131" })
     vim.api.nvim_set_hl(0, "MatchParen", { bold = true, reverse = true})
 end
 
