@@ -228,6 +228,14 @@ cmp.setup.filetype("rust", {
         }
     },
 })
+
+cmp.setup.filetype("sql", {
+    sources = {
+        { name = 'vim-dadbod-completion' },
+        { name = 'buffer' },
+    },
+})
+
 -- For some reason TS prevents LSP from autostarting
 -- so I added this workaround.
 vim.cmd('LspStart')
