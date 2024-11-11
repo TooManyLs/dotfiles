@@ -41,8 +41,8 @@ require('telescope').setup {
   pickers = {
     symbols = { theme = "cursor" },
     registers = {
-        theme = "cursor",
-        layout_config = { height = 0.87 },
+        layout_strategy = "vertical",
+        layout_config = { height = 0.87, width = 0.5 },
     },
     buffers = {
         theme = "dropdown",
