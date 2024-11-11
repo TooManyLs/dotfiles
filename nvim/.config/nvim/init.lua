@@ -38,6 +38,21 @@ require('telescope').setup {
       },
     },
   },
+  pickers = {
+    symbols = { theme = "cursor" },
+    registers = {
+        theme = "cursor",
+        layout_config = { height = 0.87 },
+    },
+    buffers = {
+        theme = "dropdown",
+        previewer = false,
+    },
+    oldfiles = {
+        theme = "dropdown",
+        previewer = false,
+    },
+  },
 }
 
 -- Enable telescope fzf native
@@ -45,16 +60,16 @@ require('telescope').load_extension 'fzf'
 
 -- Add leader shortcuts
 local tbuiltin = require('telescope.builtin')
-local tpreviewers = require('telescope.previewers')
 
 vim.keymap.set('n', '<leader><space>', function() tbuiltin.buffers { sort_lastused = true } end)
-vim.keymap.set('n', '<leader>sf', function() tbuiltin.find_files { previewer = true } end)
+vim.keymap.set('n', '<leader>sf', function() tbuiltin.find_files() end)
 vim.keymap.set('n', '<leader>sb', function() tbuiltin.current_buffer_fuzzy_find() end)
 vim.keymap.set('n', '<leader>sh', function() tbuiltin.help_tags() end)
 vim.keymap.set('n', '<leader>st', function() tbuiltin.tags() end)
 vim.keymap.set('n', '<leader>sp', function() tbuiltin.live_grep() end)
 vim.keymap.set('n', '<leader>?', function() tbuiltin.oldfiles() end)
-vim.keymap.set('n', '<leader>em', function() tbuiltin.symbols() end)
+vim.keymap.set('n', '<leader>sy', function() tbuiltin.registers() end)
+vim.keymap.set('n', '<leader>em', function() tbuiltin.symbols{ sources = { "emoji" }} end)
 
 -- Treesitter configuration
 -- Parsers must be installed manually via :TSInstall
@@ -206,7 +221,7 @@ cmp.setup ({
         { name = 'nvim_lsp' },
         { name = 'nvim_lsp_signature_help' },
         { name = 'path' },
-        { name = 'luasnip', keyword_length = 4 },
+        { name = 'luasnip' },
     }, {
         { name = 'buffer' },
     }),
