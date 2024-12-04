@@ -13,6 +13,7 @@ return {
     { 'nvim-treesitter/nvim-treesitter' },
     { 'nvim-treesitter/nvim-treesitter-textobjects' },
     { 'nvim-treesitter/nvim-treesitter-context', opts = {} },
+    { 'nvim-treesitter/playground' },
 
     -- Fuzzy Finder (files, lsp, etc)
     { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
@@ -26,4 +27,16 @@ return {
 
     -- a/i textobject manipulation
     { 'echasnovski/mini.ai', opts = {} },
+
+
+    -- markdown preview
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        build = "cd app && npm install",
+        init = function()
+            vim.g.mkdp_filetypes = { "markdown" }
+        end,
+        ft = { "markdown" },
+    },
 }

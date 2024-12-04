@@ -89,6 +89,9 @@ require('nvim-treesitter.configs').setup {
   indent = {
     enable = false,
   },
+  playground = {
+      enable = true,
+  },
   textobjects = {
     select = {
       enable = true,
