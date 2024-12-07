@@ -46,17 +46,17 @@ return {
                     ]], '\n'),
                 center = {
                     {
-                        icon = '󰍉 ',
-                        icon_hl = 'Title',
-                        desc = 'Find Files',
+                        icon = ' ',
+                        icon_hl = '@keyword',
+                        desc = 'Latest File',
                         desc_hl = 'String',
-                        key = 'f',
+                        key = 'l',
                         key_hl = 'Number',
-                        action = 'Telescope find_files'
+                        action = "'0"
                     },
                     {
                         icon = '󰙰 ',
-                        icon_hl = 'Title',
+                        icon_hl = '@keyword',
                         desc = 'Recent Files',
                         desc_hl = 'String',
                         key = 'r',
@@ -64,8 +64,17 @@ return {
                         action = 'Telescope oldfiles' 
                     },
                     {
+                        icon = '󰍉 ',
+                        icon_hl = '@keyword',
+                        desc = 'Find Files',
+                        desc_hl = 'String',
+                        key = 'f',
+                        key_hl = 'Number',
+                        action = 'Telescope find_files'
+                    },
+                    {
                         icon = '󰙅 ',
-                        icon_hl = 'Title',
+                        icon_hl = '@keyword',
                         desc = 'File Explorer',
                         desc_hl = 'String',
                         key = 'e',
@@ -74,12 +83,21 @@ return {
                     },
                     {
                         icon = ' ',
-                        icon_hl = 'Title',
-                        desc = 'Git',
+                        icon_hl = '@keyword',
+                        desc = 'Git Changes',
                         desc_hl = 'String',
                         key = 'g',
                         key_hl = 'Number',
-                        action = 'Git' 
+                        action = 'lua git()' 
+                    },
+                    {
+                        icon = '󰆼 ',
+                        icon_hl = '@keyword',
+                        desc = 'Open Database',
+                        desc_hl = 'String',
+                        key = 'd',
+                        key_hl = 'Number',
+                        action = 'lua db()' 
                     },
                 },
             }
