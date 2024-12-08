@@ -13,5 +13,12 @@ return {
   init = function()
     -- Your DBUI configuration
     vim.g.db_ui_use_nerd_fonts = 1
+    
+    -- Fullscreen DBUI menu
+    function db()
+        vim.cmd("DBUI")
+        vim.cmd("wincmd l")
+        vim.cmd("quit")
+    end
   end,
 }

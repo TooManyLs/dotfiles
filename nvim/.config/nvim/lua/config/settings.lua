@@ -39,15 +39,3 @@ vim.opt.undofile = true
 
 vim.opt.list = true
 vim.cmd("set lcs+=space:·")
-
-function db()
-    vim.cmd("DBUI")
-    vim.cmd("wincmd l")
-    vim.cmd("quit")
-end
-
-function git()
-    vim.cmd("Git")
-    vim.cmd("wincmd j")
-    vim.cmd("quit")
-end

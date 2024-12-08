@@ -16,5 +16,14 @@ return {
             }
         end
     },
-    { 'tpope/vim-fugitive' },
+    { 'tpope/vim-fugitive',
+        config = function()
+            -- Fullscreen git changes menu
+            function git()
+                vim.cmd("Git")
+                vim.cmd("wincmd j")
+                vim.cmd("quit")
+            end
+        end,
+    },
 }
