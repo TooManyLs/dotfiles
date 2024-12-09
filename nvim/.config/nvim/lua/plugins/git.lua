@@ -9,9 +9,11 @@ return {
                     topdelete = { text = '‾' },
                     changedelete = { text = '~' },
                 },
+                attach_to_untracked = true,
                 on_attach = function(bufnr)
                     vim.keymap.set('n', '[c', require('gitsigns').prev_hunk, { buffer = bufnr })
                     vim.keymap.set('n', ']c', require('gitsigns').next_hunk, { buffer = bufnr })
+                    vim.keymap.set('n', '<leader>gb', require('gitsigns').toggle_current_line_blame)
                 end,
             }
         end
