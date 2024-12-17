@@ -10,6 +10,9 @@ return {
                     changedelete = { text = '~' },
                 },
                 attach_to_untracked = true,
+                current_line_blame_opts = {
+                    virt_text_pos = "right_align",
+                },
                 on_attach = function(bufnr)
                     vim.keymap.set('n', '[c', require('gitsigns').prev_hunk, { buffer = bufnr })
                     vim.keymap.set('n', ']c', require('gitsigns').next_hunk, { buffer = bufnr })

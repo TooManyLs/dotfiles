@@ -12,7 +12,7 @@ vim.opt.termguicolors = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
-vim.wo.signcolumn = 'auto:2'
+vim.wo.signcolumn = 'yes:2'
 vim.opt.completeopt = 'menuone,noselect'
 
 vim.opt.hlsearch = false

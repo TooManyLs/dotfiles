@@ -1,3 +1,6 @@
+-- Disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 -- Map leader
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.g.mapleader = ' '
@@ -67,7 +70,16 @@ require('telescope').load_extension 'fzf'
 local tbuiltin = require('telescope.builtin')
 
 vim.keymap.set('n', '<leader><space>', function() tbuiltin.buffers { sort_lastused = true } end)
-vim.keymap.set('n', '<leader>sf', function() tbuiltin.find_files() end)
+vim.keymap.set(
+    'n', '<leader>sf',
+    function() tbuiltin.find_files() end,
+    {desc = "Search files in cwd"}
+)
+vim.keymap.set(
+    'n', '<leader>sc',
+    function() tbuiltin.find_files({ cwd = vim.fn.expand('%:p:h') }) end,
+    {desc = "Search files in the directory of current opened file"}
+)
 vim.keymap.set('n', '<leader>sb', function() tbuiltin.current_buffer_fuzzy_find() end)
 vim.keymap.set('n', '<leader>sh', function() tbuiltin.help_tags() end)
 vim.keymap.set('n', '<leader>st', function() tbuiltin.tags() end)
@@ -93,9 +105,6 @@ require('nvim-treesitter.configs').setup {
   },
   indent = {
     enable = false,
-  },
-  playground = {
-      enable = true,
   },
   textobjects = {
     select = {
@@ -144,12 +153,12 @@ require('nvim-treesitter.configs').setup {
 }
 
 -- LSP settings
-require('mason').setup {}
 require('mason-lspconfig').setup({
   ensure_installed = {
     'rust_analyzer',
     'pyright',
     'ruff',
+    'gopls',
   }
 })
 
@@ -161,9 +170,6 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, attach_opts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, attach_opts)
   vim.keymap.set('n', '<C-s>', vim.lsp.buf.signature_help, attach_opts)
-  vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, attach_opts)
-  vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, attach_opts)
-  vim.keymap.set('n', '<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, attach_opts)
   vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, attach_opts)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, attach_opts)
   vim.keymap.set('n', 'so', require('telescope.builtin').lsp_references, attach_opts)
@@ -172,7 +178,12 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities =require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-local servers = { 'rust_analyzer', 'pyright', 'ruff' }
+local servers = {
+    'rust_analyzer',
+    'pyright',
+    'ruff',
+    'gopls',
+}
 for _, lsp in ipairs(servers) do
     lspconf[lsp].setup {
         on_attach = on_attach,

@@ -1,7 +1,13 @@
 return {
     -- LSP
     { 'neovim/nvim-lspconfig' },
-    { 'williamboman/mason.nvim' },
+    { 'williamboman/mason.nvim',
+        opts = {
+            ui = {
+                border = "rounded",
+            },
+        }
+    },
     { 'williamboman/mason-lspconfig.nvim' },
 
     -- line/block commenting
@@ -13,7 +19,6 @@ return {
     { 'nvim-treesitter/nvim-treesitter' },
     { 'nvim-treesitter/nvim-treesitter-textobjects' },
     { 'nvim-treesitter/nvim-treesitter-context', opts = {} },
-    { 'nvim-treesitter/playground' },
 
     -- Fuzzy Finder (files, lsp, etc)
     { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
@@ -23,7 +28,6 @@ return {
       build = 'make',
     },      
     { 'nvim-telescope/telescope-symbols.nvim' },
-    { 'ThePrimeagen/vim-be-good' },
 
     -- a/i textobject manipulation
     { 'echasnovski/mini.ai', opts = {} },
@@ -38,5 +42,34 @@ return {
             vim.g.mkdp_filetypes = { "markdown" }
         end,
         ft = { "markdown" },
+    },
+
+    {
+        "nvim-tree/nvim-tree.lua",
+        opts = {
+            vim.keymap.set("n", "<leader>fe", ":NvimTreeToggle <CR>"),
+            view = {
+                width = 50,
+                number = true,
+                relativenumber = true,
+            },
+            renderer = {
+                add_trailing = true,
+                highlight_git = "name",
+                highlight_modified = "icon",
+                indent_markers = {
+                    enable = true,
+                },
+            },
+            diagnostics = {
+                enable = true,
+            },
+            modified = {
+                enable = true,
+            },
+            sort = {
+                sorter = "filetype",
+            },
+        }
     },
 }

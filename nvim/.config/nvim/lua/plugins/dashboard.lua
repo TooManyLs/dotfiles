@@ -46,6 +46,15 @@ return {
                     ]], '\n'),
                 center = {
                     {
+                        icon = '󰻭 ',
+                        icon_hl = '@keyword',
+                        desc = 'New file',
+                        desc_hl = 'String',
+                        key = 'n',
+                        key_hl = 'Number',
+                        action = "new | wincmd j | quit"
+                    },
+                    {
                         icon = ' ',
                         icon_hl = '@keyword',
                         desc = 'Latest File',
@@ -79,7 +88,7 @@ return {
                         desc_hl = 'String',
                         key = 'e',
                         key_hl = 'Number',
-                        action = 'Explore' 
+                        action = 'NvimTreeOpen' 
                     },
                     {
                         icon = ' ',

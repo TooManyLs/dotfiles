@@ -9,6 +9,10 @@ require("monokai-nightasty").setup({
         floats = "transparent",
     },
     markdown_header_marks = true,
+    on_highlights = function(hl, c)
+        hl["LineNr"] = hl["@type"]
+        hl["CursorLineNr"] = hl["Function"]
+    end,
 })
 require("eldritch").setup({
     transparent = true,
@@ -22,5 +26,21 @@ require("eldritch").setup({
         hl["TelescopeNormal"] = hl.background
     end,
 })
+require("ayu").setup({
+    overrides = {
+        Normal = { bg = "None" },
+        ColorColumn = { bg = "None" },
+        SignColumn = { bg = "None" },
+        Folded = { bg = "None" },
+        FoldColumn = { bg = "None" },
+        CursorLine = { bg = "None" },
+        CursorColumn = { bg = "None" },
+        WhichKeyFloat = { bg = "None" },
+        VertSplit = { bg = "None" },
+        CursorLineNr = { link = "String" },
+        LineNr = { link = "@variable" },
+    },
+})
+vim.g.moonflyTransparent = true
 
-vim.cmd.colorscheme("monokai-nightasty")
+vim.cmd.colorscheme("moonfly")

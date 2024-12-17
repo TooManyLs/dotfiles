@@ -30,5 +30,3 @@ vim.keymap.set("n", "<leader>k", "<C-w>k")
 vim.keymap.set("n", "<leader>l", "<C-w>l")
 
 vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
-
-vim.keymap.set('n', '<leader>ex', vim.cmd.Explore)
