@@ -159,6 +159,9 @@ require('mason-lspconfig').setup({
     'pyright',
     'ruff',
     'gopls',
+    'html',
+    'emmet_ls',
+    'cssls',
   }
 })
 
@@ -183,6 +186,8 @@ local servers = {
     'pyright',
     'ruff',
     'gopls',
+    'html',
+    'cssls',
 }
 for _, lsp in ipairs(servers) do
     lspconf[lsp].setup {
@@ -190,6 +195,11 @@ for _, lsp in ipairs(servers) do
         capabilities = capabilities
     }
 end
+lspconf.emmet_ls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { 'html', 'css', 'scss', 'less', 'sass', 'javascript'},
+})
 
 -- Autocompletion setup
 local cmp = require 'cmp'
