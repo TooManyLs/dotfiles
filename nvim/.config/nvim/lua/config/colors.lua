@@ -42,5 +42,6 @@ require("ayu").setup({
     },
 })
 vim.g.moonflyTransparent = true
+vim.g.moonflyNormalFloat = true
 
 vim.cmd.colorscheme("moonfly")
