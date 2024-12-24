@@ -79,7 +79,7 @@ permissions_s = { fg = "darkgray" }
 
 # : Select {{{
 
-[select]
+[pick]
 border   = { fg = "blue" }
 active   = { fg = "magenta", bold = true }
 inactive = {}
@@ -177,13 +177,13 @@ rules = [
 
 	# Archives
 	{ mime = "application/{,g}zip", fg = "red" },
-	{ mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", fg = "red" },
+	{ mime = "application/{tar,bzip*,7z-compressed,xz,rar}", fg = "red" },
 
 	# Documents
 	{ mime = "application/{pdf,doc,rtf,vnd.*}", fg = "#22a6a6" },
 
 	# Empty files
-	# { mime = "inode/x-empty", fg = "red" },
+	# { mime = "inode/empty", fg = "red" },
 
 	# Special files
 	{ name = "*", is = "orphan", bg = "red" },

@@ -5,10 +5,10 @@
 [manager]
 
 prepend_keymap = [
-    { on = ["<S-b>", "f"], run = 'shell "feh --bg-fill $0"  --confirm', desc = "Set as background"},
-    { on = "T", run = "plugin --sync max-preview", desc = "Maximize or restore preview" },
+    { on = ["<S-b>", "f"], run = 'shell "feh --bg-fill $0"  ', desc = "Set as background"},
+    { on = "T", run = "plugin max-preview", desc = "Maximize or restore preview" },
     { on = ["g", "r"], run = '''
-    shell 'ya pub dds-cd --str "$(git rev-parse --show-toplevel)"' --confirm
+    shell 'ya pub dds-cd --str "$(git rev-parse --show-toplevel)"' 
     ''', desc = "Go to the root of git repository" },
 ]
 
@@ -55,11 +55,11 @@ keymap = [
 	{ on = "J", run = "seek 5",  desc = "Seek down 5 units in the preview" },
 
 	# Selection
-	{ on = "<Space>", run = [ "select --state=none" ], desc = "Toggle the current selection state" },
+	{ on = "<Space>", run = [ "toggle --state=none" ], desc = "Toggle the current selection state" },
 	{ on = "v",       run = "visual_mode",                        desc = "Enter visual mode (selection mode)" },
 	{ on = "V",       run = "visual_mode --unset",                desc = "Enter visual mode (unset mode)" },
-	{ on = "<C-a>",   run = "select_all --state=true",            desc = "Select all files" },
-	{ on = "<C-r>",   run = "select_all --state=none",            desc = "Inverse selection of all files" },
+	{ on = "<C-a>",   run = "toggle_all --state=true",            desc = "Select all files" },
+	{ on = "<C-r>",   run = "toggle_all --state=none",            desc = "Inverse selection of all files" },
 
 	# Operation
 	{ on = "o",         run = "open",                        desc = "Open selected files" },
@@ -92,7 +92,7 @@ keymap = [
 	# Linemode
 	{ on = [ "m", "s" ], run = "linemode size",        desc = "Set linemode to size" },
 	{ on = [ "m", "p" ], run = "linemode permissions", desc = "Set linemode to permissions" },
-	{ on = [ "m", "c" ], run = "linemode ctime",       desc = "Set linemode to ctime" },
+	{ on = [ "m", "c" ], run = "linemode btime",       desc = "Set linemode to btime" },
 	{ on = [ "m", "m" ], run = "linemode mtime",       desc = "Set linemode to mtime" },
 	{ on = [ "m", "o" ], run = "linemode owner",       desc = "Set linemode to owner" },
 	{ on = [ "m", "n" ], run = "linemode none",        desc = "Set linemode to none" },
@@ -115,8 +115,8 @@ keymap = [
 	# Sorting
 	{ on = [ ",", "m" ], run = [ "sort modified --reverse=no", "linemode mtime" ], desc = "Sort by modified time" },
 	{ on = [ ",", "M" ], run = [ "sort modified --reverse", "linemode mtime" ],    desc = "Sort by modified time (reverse)" },
-	{ on = [ ",", "c" ], run = [ "sort created --reverse=no", "linemode ctime" ],  desc = "Sort by created time" },
-	{ on = [ ",", "C" ], run = [ "sort created --reverse", "linemode ctime" ],     desc = "Sort by created time (reverse)" },
+	{ on = [ ",", "b" ], run = [ "sort created --reverse=no", "linemode btime" ],  desc = "Sort by created time" },
+	{ on = [ ",", "B" ], run = [ "sort created --reverse", "linemode btime" ],     desc = "Sort by created time (reverse)" },
 	{ on = [ ",", "e" ], run = "sort extension --reverse=no",                      desc = "Sort by extension" },
 	{ on = [ ",", "E" ], run = "sort extension --reverse",                         desc = "Sort by extension (reverse)" },
 	{ on = [ ",", "a" ], run = "sort alphabetical --reverse=no",                   desc = "Sort alphabetically" },
@@ -182,7 +182,7 @@ keymap = [
 	{ on = "<F1>", run = "help", desc = "Open help" },
 ]
 
-[select]
+[pick]
 
 keymap = [
 	{ on = "<Esc>",   run = "close",          desc = "Cancel selection" },
