@@ -166,7 +166,7 @@ require('mason-lspconfig').setup({
 })
 
 local lspconf = require('lspconfig')
-local on_attach = function(args)
+local on_attach = function(_, bufnr)
   local attach_opts = { silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, attach_opts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, attach_opts)
@@ -176,14 +176,6 @@ local on_attach = function(args)
   vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, attach_opts)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, attach_opts)
   vim.keymap.set('n', 'so', require('telescope.builtin').lsp_references, attach_opts)
-
-  -- Format on save
-  vim.api.nvim_create_autocmd('BufWritePre', {
-      buffer = args.buf,
-      callback = function()
-          vim.lsp.buf.format({ bufnr = args.buf })
-      end,
-  })
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -200,13 +192,29 @@ local servers = {
 for _, lsp in ipairs(servers) do
     lspconf[lsp].setup {
         on_attach = on_attach,
-        capabilities = capabilities
+        capabilities = capabilities,
+        -- Format on save
+        vim.api.nvim_create_autocmd('LspAttach', {
+          callback = function(args)
+            local client = vim.lsp.get_client_by_id(args.data.client_id)
+            if not client then return end
+
+            if client.supports_method('textDocument/formatting') then
+              vim.api.nvim_create_autocmd('BufWritePre', {
+                buffer = args.buf,
+                callback = function()
+                  vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
+                end,
+              })
+            end
+          end,
+        }),
     }
 end
 lspconf.emmet_ls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { 'html', 'css', 'scss', 'less', 'sass', 'javascript'},
+    filetypes = { 'html', 'css', 'scss', 'less', 'sass'},
 })
 
 -- Autocompletion setup
