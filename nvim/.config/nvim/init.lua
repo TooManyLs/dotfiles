@@ -1,6 +1,3 @@
--- Disable netrw
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 -- Map leader
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.g.mapleader = ' '
@@ -324,3 +321,9 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = true
   }
 )
+
+require("oil").setup({
+  default_file_explorer = true,
+})
+
+vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
