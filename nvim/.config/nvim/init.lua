@@ -324,6 +324,11 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 require("oil").setup({
   default_file_explorer = true,
+  float = {
+    padding = 0,
+    max_width = 0.8,
+    max_height = 0.8,
+  },
 })
 
 vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
