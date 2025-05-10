@@ -18,9 +18,10 @@ alias ll='ls -lAhG'
 alias llg='ls -lAh'
 alias grep='grep --color=auto'
 
-alias hypr='vi .config/hypr/hyprland.conf'
+alias hypr='vi ~/.config/hypr/hyprland.conf'
 
 export PATH="$PATH:/opt/nvim-linux64/bin"
+export XDG_CURRENT_DESKTOP='Hyprland'
 eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/zen.toml)"
 eval "$(zoxide init zsh)"
 
