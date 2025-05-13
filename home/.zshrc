@@ -21,6 +21,10 @@ alias grep='grep --color=auto'
 alias hypr='vi ~/.config/hypr/hyprland.conf'
 
 export PATH="$PATH:/opt/nvim-linux64/bin"
+
+# Add user scripts to PATH
+export PATH="$PATH:/usr/bin/scripts"
+
 export XDG_CURRENT_DESKTOP='Hyprland'
 eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/zen.toml)"
 eval "$(zoxide init zsh)"
