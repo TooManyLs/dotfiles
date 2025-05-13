@@ -17,11 +17,12 @@
         "cpu",
         "memory",
         "pulseaudio/slider",
+        "custom/notification",
+        "tray",
         "bluetooth",
         "network",
         "hyprland/language",
         "clock",
-        "tray",
         "custom/power"
     ],
     "keyboard-state": {
@@ -34,9 +35,15 @@
         }
     },
     "hyprland/language": {
-        "format": "{short}"
+        "format": "{}",
+        "format-en": "🇺🇸",
+        "format-ru": "🇷🇺"
+    },
+    "hyprland/window": {
+        "format": "{initialTitle}"
     },
     "pulseaudio/slider": {
+        "format": "%",
         "min": 0,
         "max": 100,
         "orientation": "horizontal"
@@ -134,15 +141,37 @@
     },
     "custom/power": {
         "format" : "⏻ ",
+        "tooltip": false,
         "on-click": "tschuss &"
     },
     "bluetooth": {
         // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
-        "format": " {status}",
-        "format-disabled": "", // an empty format will hide the module
+        "format": "{}",
+        "format-off": "󰂲",
+        "format-on": "󰂯",
         "format-connected": " {num_connections} connected",
         "tooltip-format": "{controller_alias}\t{controller_address}",
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
     }
 }
