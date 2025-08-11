@@ -22,8 +22,7 @@
         "bluetooth",
         "network",
         "hyprland/language",
-        "clock",
-        "custom/power"
+        "clock"
     ],
     "keyboard-state": {
         "numlock": true,
@@ -138,11 +137,6 @@
         "on-click": "playerctl --player=spotify play-pause",
         "on-scroll-up": "playerctl --player=spotify previous",
         "on-scroll-down": "playerctl --player=spotify next"
-    },
-    "custom/power": {
-        "format" : "⏻ ",
-        "tooltip": false,
-        "on-click": "tschuss &"
     },
     "bluetooth": {
         // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
