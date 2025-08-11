@@ -29,6 +29,10 @@ export XDG_CURRENT_DESKTOP='Hyprland'
 eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/zen.toml)"
 eval "$(zoxide init zsh)"
 
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+bindkey  "^[[3~"  delete-char
+
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
