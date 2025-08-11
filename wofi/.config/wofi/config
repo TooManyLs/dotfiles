@@ -1,0 +1,15 @@
+width=30%
+hide_scroll=true
+prompt=Search...
+insensitive=true
+normal_window=true
+yoffset=100
+dynamic_lines=true
+hide_search=true
+key_hide_search=i
+
+
+key_up=k
+key_down=j
+key_left=h
+key_right=l
