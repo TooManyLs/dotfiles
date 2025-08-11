@@ -13,7 +13,7 @@ use = ""
 
 # : Manager {{{
 
-[mgr]
+[manager]
 cwd = { fg = "#22a6a6" }
 
 # Hovered
